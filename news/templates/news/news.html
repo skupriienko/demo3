@@ -1,0 +1,17 @@
+
+{% extends "base.html" %}
+{% block title %}{{ news.title }}{% endblock %}
+{% block content %}
+<h2>{{ news.title }}</h2>
+<p>{{ news.author_name }}</p>
+{% if news.is_on_sale %}
+  <p class="price sale-price">
+    Regular Price:<del>${{ news.get_price|floatformat:2 }}</del> <br/>
+    <strong>SALE: ${{ news.current_price|floatformat:2 }}</strong>
+  </p>
+{% else %}
+  <p class="price price-regular">
+    <strong>Price: ${{ news.get_price|floatformat:2 }}</strong>
+  </p>
+{% endif %}
+{% endblock %}

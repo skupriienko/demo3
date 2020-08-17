@@ -1,0 +1,28 @@
+
+{% extends "base.html" %}
+{% block title %}News{% endblock %}
+{% block content %}
+<div class="news-list">
+  {% for news in news_s %}
+  <div class="news">
+    <p>
+      <small><a href="{% url 'show-news' news.id %}">{{ news.title }}, {{ news.author_name }}, {{ news.creation_date|date:"d.m.Y" }}</a>
+      </small>
+    </p>
+    <table width="100%">
+      <tr>
+         <td width="50%">
+            <a href="{{ news.get_absolute_url }}addlike/?next={{ news.get_absolute_url|urlencode:"" }}"><i
+                            style="color:#449d44" class="fa fa-thumbs-o-up fa-2x"></i></a> <span
+                        class="lead">{{ news.likes }}</span>
+                    &nbsp;&nbsp;&nbsp;
+            <a href="{{ news.get_absolute_url }}adddislike/?next={{ news.get_absolute_url|urlencode:"" }}"><i
+                            style="color:#942a25" class="fa fa-thumbs-o-up fa-2x fa-rotate-180"></i></a> <span
+                        class="lead">{{ news.dislikes }}</span></td>
+         <td width="50%"></td>
+      </tr>
+    </table>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
