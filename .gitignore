@@ -235,3 +235,5 @@ static/local/
 static/rev-manifest.json
 temp/
 tmp/
+
+flaskos/
